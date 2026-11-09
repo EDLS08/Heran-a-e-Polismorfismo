@@ -1,17 +1,19 @@
 public class Manager extends Employee {
-    private double bonus;
+    private double bonusMultiplier;
 
     @Override
-    public int calculateSalary() {
-        // Ajustado para refletir o Salário Base + o Bônus calculado (Ex: 1200 base * 1.50 multiplicador = 1800)
-        return (int) (this.baseSalary * this.bonus);
+    public double calculateSalary() {
+        return baseSalary * bonusMultiplier;
     }
 
-    public double getBonus() {
-        return bonus;
+    public double getBonusMultiplier() {
+        return bonusMultiplier;
     }
 
-    public void setBonus(double bonus) {
-        this.bonus = bonus;
+    public void setBonusMultiplier(double bonusMultiplier) {
+        if (bonusMultiplier < 1) {
+            throw new IllegalArgumentException("Bonus multiplier must be at least 1.");
+        }
+        this.bonusMultiplier = bonusMultiplier;
     }
 }
