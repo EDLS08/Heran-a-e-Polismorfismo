@@ -1,8 +1,8 @@
 public class Employee {
     private String name;
-    protected int baseSalary; // protected permite que as classes filhas leiam este atributo
+    protected double baseSalary;
 
-    public int calculateSalary() {
+    public double calculateSalary() {
         return baseSalary;
     }
 
@@ -14,11 +14,14 @@ public class Employee {
         this.name = name;
     }
 
-    public int getBaseSalary() {
+    public double getBaseSalary() {
         return baseSalary;
     }
 
-    public void setBaseSalary(int baseSalary) {
+    public void setBaseSalary(double baseSalary) {
+        if (baseSalary < 0) {
+            throw new IllegalArgumentException("Base salary cannot be negative.");
+        }
         this.baseSalary = baseSalary;
     }
 }
